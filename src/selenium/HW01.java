@@ -32,7 +32,7 @@ public class HW01 {
 	  String homePageURL = driver.getCurrentUrl();
 	  
 	  Assert.assertEquals("Home page",homePageTitle);
-	  // Assert.assertEquals("http://live.guru99.com", homePageURL);
+	  Assert.assertEquals("http://live.guru99.com", homePageURL);
 
   }
 
