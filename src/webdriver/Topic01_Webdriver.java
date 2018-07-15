@@ -1,7 +1,5 @@
 package webdriver;
 
-import java.util.Random;
-import java.util.UUID;
 import java.util.concurrent.TimeUnit;
 
 import org.openqa.selenium.By;
@@ -13,7 +11,7 @@ import org.testng.annotations.AfterClass;
 import org.testng.annotations.BeforeClass;
 import org.testng.annotations.Test;
 
-public class Webdriver_01 {
+public class Topic01_Webdriver extends CommonFunction {
 	WebDriver driver;
 
 	@BeforeClass
@@ -44,7 +42,7 @@ public class Webdriver_01 {
 		driver.findElement(By.xpath("//a[@title='Create an Account']//span[contains(.,'Create an Account')]")).click();
 		urlPage = driver.getCurrentUrl();
 		Assert.assertEquals("http://live.guru99.com/index.php/customer/account/create/", urlPage);
-		
+
 	}
 
 	@Test
@@ -64,7 +62,7 @@ public class Webdriver_01 {
 		driver.get("http://live.guru99.com");
 		driver.findElement(By.xpath(".//div[@class='footer-container']//a[contains(@title,'My Account')]")).click();
 
-		email = RandomString();
+		email = CommonFunction.RandomString();
 		WebElement field = driver.findElement(By.xpath(".//input[@id='email']"));
 		field.clear();
 		field.sendKeys(email);
@@ -80,7 +78,7 @@ public class Webdriver_01 {
 		driver.get("http://live.guru99.com");
 		driver.findElement(By.xpath(".//div[@class='footer-container']//a[contains(@title,'My Account')]")).click();
 
-		email = RandomString();
+		email = CommonFunction.RandomString();
 		passWord = RandomPassword();
 		WebElement field = driver.findElement(By.xpath(".//input[@id='email']"));
 		field.clear();
@@ -98,12 +96,12 @@ public class Webdriver_01 {
 		driver.get("http://live.guru99.com");
 		String url = "http://live.guru99.com/index.php/";
 
-		String email = RandomString();
-		String emailValid = RandomValidEmailAddress(email);
-		String firstName = RandomString();
-		String middleName = RandomString();
-		String lastName = RandomString();
-		String password = RandomString();
+		String emailValid = RandomValidEmailAddress(CommonFunction.RandomString());
+		String firstName = CommonFunction.RandomString();
+		String middleName = CommonFunction.RandomString();
+		String lastName = CommonFunction.RandomString();
+		String password = CommonFunction.RandomString();
+
 		WebElement field;
 		driver.findElement(By.xpath(".//div[@class='footer-container']//a[contains(@title,'My Account')]")).click();
 		driver.findElement(By.xpath("//a[@title='Create an Account']//span[contains(.,'Create an Account')]")).click();
@@ -144,25 +142,6 @@ public class Webdriver_01 {
 		Thread.sleep(6000);
 		String urlPage = driver.getCurrentUrl();
 		Assert.assertEquals(url, urlPage);
-	}
-
-	public String RandomString() {
-		String uuid = UUID.randomUUID().toString();
-		return uuid;
-	}
-
-	public String RandomPassword() {
-		int randomInt;
-		String random;
-		Random rg = new Random();
-		randomInt = rg.nextInt(4);
-		random = Integer.toString(randomInt);
-		return random;
-	}
-
-	public static String RandomValidEmailAddress(String email) {
-		String emailValid = email + "@gmail.com";
-		return emailValid;
 	}
 
 	@AfterClass
