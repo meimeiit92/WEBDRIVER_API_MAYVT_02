@@ -6,8 +6,6 @@ import java.util.UUID;
 public class CommonFunction {
 
 	public static String RandomString() {
-		// String uuid = UUID.randomUUID().toString();
-		// return uuid;
 		String alphabet = "abcdefghijklmnopqrstuvwxyz";
 		Random random = new Random();
 		char c = alphabet.charAt(random.nextInt(26));
@@ -15,7 +13,7 @@ public class CommonFunction {
 		return s;
 	}
 
-	public static String RandomPassword() {
+	public static String RandomNumber() {
 		int randomInt;
 		String random;
 		Random rg = new Random();
@@ -29,4 +27,11 @@ public class CommonFunction {
 		return emailValid;
 	}
 
+
+	public static String RandomWithUUID() {
+		String uuid = UUID.randomUUID().toString();
+		return uuid;
+
+	
+	}
 }

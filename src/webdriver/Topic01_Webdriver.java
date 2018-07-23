@@ -79,7 +79,7 @@ public class Topic01_Webdriver extends CommonFunction {
 		driver.findElement(By.xpath(".//div[@class='footer-container']//a[contains(@title,'My Account')]")).click();
 
 		email = CommonFunction.RandomString();
-		passWord = RandomPassword();
+		passWord = RandomNumber();
 		WebElement field = driver.findElement(By.xpath(".//input[@id='email']"));
 		field.clear();
 		field.sendKeys(email);
