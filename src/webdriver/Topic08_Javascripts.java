@@ -21,7 +21,6 @@ public class Topic08_Javascripts {
 		driver = new FirefoxDriver();
 		driver.manage().timeouts().implicitlyWait(30, TimeUnit.SECONDS);
 		driver.manage().window().maximize();
-
 	}
 
 	@Test
@@ -44,8 +43,8 @@ public class Topic08_Javascripts {
 		Assert.assertEquals("Privacy Policy", js.executeScript("return document.title").toString());
 
 		js.executeScript("window.scrollBy(0,document.body.scrollHeight)");
-		List<WebElement> we = driver.findElements(By.xpath("//tbody/following-sibling::tr/th[text()='WISHLIST_CNT']"));
-		// Assert.assertTrue(we.size()==1);
+		List<WebElement> we = driver.findElements(By.xpath("//tbody//following-sibling::tr/th[text()='WISHLIST_CNT']"));
+		Assert.assertTrue(we.size() == 1);
 
 		js.executeScript("window.location = 'http://demo.guru99.com/v4/'");
 		Assert.assertEquals("demo.guru99.com", (String) js.executeScript("return document.domain"));
@@ -55,18 +54,15 @@ public class Topic08_Javascripts {
 	public void TC02_RemoveAttribute() {
 		driver.get("https://www.w3schools.com/tags/tryit.asp?filename=tryhtml_input_disabled");
 		JavascriptExecutor js = (JavascriptExecutor) driver;
-		List<WebElement> iframeElements = driver.findElements(By.tagName("iframeResult"));
-		if (iframeElements.size() > 0) {
-			WebElement element = driver.findElement(By.xpath("//input[@name='lname']"));
-			js.executeScript("arguments[0].removeAttribute('disabled');", element);
-			String lastName = CommonFunction.RandomString();
-			driver.findElement(By.xpath("//input[@name='lname']")).sendKeys(lastName);
-			
-			driver.findElement(By.xpath("//input[@type='submit']")).click();
-			String stringAfter = driver.findElement(By.xpath("//div[@class='w3-container w3-large w3-border']"))
-					.getText();
-			Assert.assertTrue(stringAfter.contains(lastName));
-		}
+		driver.switchTo().frame("iframeResult");
+		WebElement element = driver.findElement(By.xpath("//input[@name='lname']"));
+		js.executeScript("arguments[0].removeAttribute('disabled');", element);
+		String lastName = CommonFunction.RandomString();
+		driver.findElement(By.xpath("//input[@name='lname']")).sendKeys(lastName);
+
+		driver.findElement(By.xpath("//input[@type='submit']")).click();
+		String stringAfter = driver.findElement(By.xpath("//div[@class='w3-container w3-large w3-border']")).getText();
+		Assert.assertTrue(stringAfter.contains(lastName));
 
 	}
 

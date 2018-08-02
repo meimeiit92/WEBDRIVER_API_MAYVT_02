@@ -25,6 +25,7 @@ public class Topic07_IframeWindow {
 		driver.manage().window().maximize();
 
 	}
+
 	@Test
 	public void TC01_Iframe() {
 		String idFrame1 = "vizury-notification-template";
@@ -58,6 +59,7 @@ public class Topic07_IframeWindow {
 		Assert.assertTrue(imageElements.size() == 8);
 
 	}
+
 	@Test
 	public void TC02_Window() {
 		driver.get("http://daominhdam.890m.com/");
@@ -80,14 +82,14 @@ public class Topic07_IframeWindow {
 	public void TC03_MutilWindows() {
 		driver.get("http://www.hdfcbank.com/");
 		try {
-		 if (driver.findElement(By.xpath("//img[@class='notimage clickable-element']")).isDisplayed()) {
-		 driver.findElement(By.xpath("//div[@id='div-close']")).click();
-		 System.out.println("Element is Visible");
-		 }
-		 } catch (NoSuchElementException e) {
+			if (driver.findElement(By.xpath("//img[@class='notimage clickable-element']")).isDisplayed()) {
+				driver.findElement(By.xpath("//div[@id='div-close']")).click();
+				System.out.println("Element is Visible");
+			}
+		} catch (NoSuchElementException e) {
 
-		 System.out.println("Element is InVisible");
-		 }
+			System.out.println("Element is InVisible");
+		}
 		driver.findElement(By.xpath("//a[@href='/htdocs/common/agri/index.html']")).click();
 		String parentWindow = driver.getWindowHandle();
 		Set<String> allWindows = driver.getWindowHandles();
@@ -96,30 +98,17 @@ public class Topic07_IframeWindow {
 				String parent1 = driver.getWindowHandle();
 				driver.switchTo().window(runWindow);
 				driver.findElement(By.xpath("//div[p='Account Details']")).click();
-				Set<String> allWindows1 = driver.getWindowHandles();
-				for (String runWindow1 : allWindows1) {
-					if (!runWindow1.equals(parentWindow) && !runWindow1.equals(parent1)) {
-						String parent2 = driver.getWindowHandle();
-						driver.switchTo().window(runWindow1);
-						driver.findElement(By.xpath("//a[text()='Privacy Policy']")).click();
-						Set<String> allWindows2 = driver.getWindowHandles();
-						for (String runWindow2 : allWindows2) {
-							if (!runWindow2.equals(parentWindow) && !runWindow2.equals(parent1)
-									&& !runWindow2.equals(parent2)) {
-								driver.switchTo().window(runWindow2);
-								driver.findElement(By.xpath("//a[@title='Corporate Social Responsibility']")).click();
-								closeAllWithoutParentWindows(parent2);
-								break;
-							}
-						}
-						closeAllWithoutParentWindows(parent1);
-						break;
-					}
-				}
-				closeAllWithoutParentWindows(parentWindow);
+				closeAllWithoutParentWindows(parent1);
 				break;
 			}
 		}
+		String parent2 = driver.getWindowHandle();
+		driver.findElement(By.xpath("//a[text()='Privacy Policy']")).click();
+		closeAllWithoutParentWindows(parent2);
+
+		driver.findElement(By.xpath("//a[@title='Corporate Social Responsibility']")).click();
+		closeAllWithoutParentWindows(parent2);
+
 	}
 
 	public void closeAllWithoutParentWindows(String parentWindow) {

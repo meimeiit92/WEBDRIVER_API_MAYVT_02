@@ -19,14 +19,14 @@ public class Topic05_Button_CheckBox_Alert {
 	@BeforeClass
 	public void beforeClass() {
 		driver = new FirefoxDriver();
+		driver.manage().timeouts().implicitlyWait(30, TimeUnit.SECONDS);
+		driver.manage().window().maximize();
 
 	}
 
 	@Test
 	public void TC01_Button() {
 		String urlPage;
-		driver.manage().timeouts().implicitlyWait(30, TimeUnit.SECONDS);
-		driver.manage().window().maximize();
 		driver.get("http://live.guru99.com");
 		driver.findElement(By.xpath(".//div[@class='footer-container']//a[contains(@title,'My Account')]")).click();
 
