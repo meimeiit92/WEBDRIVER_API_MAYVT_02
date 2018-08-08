@@ -1,6 +1,8 @@
 package webdriver;
 
+import java.util.Calendar;
 import java.util.Random;
+import java.util.TimeZone;
 import java.util.UUID;
 
 public class CommonFunction {
@@ -27,11 +29,20 @@ public class CommonFunction {
 		return emailValid;
 	}
 
-
 	public static String RandomWithUUID() {
 		String uuid = UUID.randomUUID().toString();
 		return uuid;
-
-	
 	}
+	
+    public static String getCurrentDay(){
+        Calendar calendar = Calendar.getInstance(TimeZone.getDefault());
+ 
+        int todayInt = calendar.get(Calendar.DAY_OF_MONTH);
+        System.out.println("Today Int: " + todayInt +"\n");
+ 
+        String todayStr = Integer.toString(todayInt);
+        System.out.println("Today Str: " + todayStr + "\n");
+ 
+        return todayStr;
+    }
 }
