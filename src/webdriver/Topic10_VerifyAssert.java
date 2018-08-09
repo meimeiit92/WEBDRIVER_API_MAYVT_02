@@ -73,31 +73,31 @@ public class Topic10_VerifyAssert {
 		WebDriverWait wait = new WebDriverWait(driver, 10);
 		wait.until(ExpectedConditions
 				.visibilityOfElementLocated(By.xpath("//div[@id='javascript_countdown_time']")));
-		Wait<WebDriver> wait1 = new FluentWait<WebDriver>(driver)
-			    .withTimeout(30, SECONDS)
-			    .pollingEvery(5, SECONDS)
-			    .ignoring(NoSuchElementException.class);
-			WebElement foo = wait1.until(new Function<WebDriver, WebElement>() 
-			{
-			  public WebElement apply(WebDriver driver) {
-			  return driver.findElement(By.xpath("//div[@id='javascript_countdown_time']"));
-			}
-			});
+		//Wait<WebDriver> wait1 = new FluentWait<WebDriver>(driver)
+		//	    .withTimeout(30, SECONDS)
+		//	    .pollingEvery(5, SECONDS)
+		//	    .ignoring(NoSuchElementException.class);
+		//	WebElement foo = wait1.until(new Function<WebDriver, WebElement>() 
+		//	{
+		//	  public WebElement apply(WebDriver driver) {
+		//	  return driver.findElement(By.xpath("//div[@id='javascript_countdown_time']"));
+		//	}
+		//	});
 	}
 
 	@Test
 	public void TC04_() {
 		driver.get("http://toolsqa.wpengine.com/automation-practice-switch-windows/");
 
-		Wait<WebDriver> wait = new FluentWait<WebDriver>(driver)
-			    .withTimeout(30, SECONDS)
-			    .pollingEvery(5, SECONDS)
-			    .ignoring(NoSuchElementException.class);
-			WebElement foo = wait.until(new Function<WebDriver, WebElement>() 
-			{
-			  public WebElement apply(WebDriver driver) {
-			  return driver.findElement(By.xpath("//div[@id='javascript_countdown_time']"));
-			}
+		//Wait<WebDriver> wait = new FluentWait<WebDriver>(driver)
+		//	    .withTimeout(30, SECONDS)
+		//	    .pollingEvery(5, SECONDS)
+		//	    .ignoring(NoSuchElementException.class);
+		//	WebElement foo = wait.until(new Function<WebDriver, WebElement>() 
+		//	{
+		//	  public WebElement apply(WebDriver driver) {
+		//	  return driver.findElement(By.xpath("//div[@id='javascript_countdown_time']"));
+		//	}
 
 	}
 
