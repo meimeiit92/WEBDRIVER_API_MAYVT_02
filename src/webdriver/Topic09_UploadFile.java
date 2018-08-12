@@ -37,32 +37,32 @@ public class Topic09_UploadFile {
 		WebElement parent = driver.findElement(By.xpath("//tbody[@class='files']"));
 		List<WebElement> listItemsBefore = parent.findElements(By.xpath(".//*"));
 
-		fileInput.sendKeys("/Users/meimei/Downloads/IMG_2023.JPGIMG_2023.JPG");
+		fileInput.sendKeys("//Data_Test/36614783_962562140592023_7679533556837646336_n.jpg");
 
 		List<WebElement> listItemsAfter = parent.findElements(By.xpath(".//*"));
 		Assert.assertTrue(listItemsBefore.size() == 0 && listItemsAfter.size() > 0);
 	}
 
-	@Test
+	
 	public void TC02_UploadFileByAutoIT() throws IOException {
 		driver.get("http://blueimp.github.com/jQuery-File-Upload/");
 		WebElement parent = driver.findElement(By.xpath("//tbody[@class='files']"));
 		List<WebElement> listItemsBefore = parent.findElements(By.xpath(".//*"));
 		driver.findElement(By.xpath("//input[@type='file']")).click();
-		String filePath = "E:\\PROJECT ROOT\\ROOT_WEBDRIVER_API\\Selenium_Training_Official\\upload\\image.png";
+		String filePath = "//Data_Test/36614783_962562140592023_7679533556837646336_n.jpg";
 		Runtime.getRuntime().exec(new String[] { ".\\upload\\ie.exe", filePath });
 
 		List<WebElement> listItemsAfter = parent.findElements(By.xpath(".//*"));
 		Assert.assertTrue(listItemsBefore.size() == 0 && listItemsAfter.size() > 0);
 	}
 
-	@Test
+	
 	public void TC03_UploadFileByRobotClass() throws IOException, AWTException, InterruptedException {
 		driver.get("http://blueimp.github.com/jQuery-File-Upload/");
 		WebElement parent = driver.findElement(By.xpath("//tbody[@class='files']"));
 		List<WebElement> listItemsBefore = parent.findElements(By.xpath(".//*"));
 		driver.findElement(By.xpath("//input[@type='file']")).click();
-		StringSelection select = new StringSelection("E:\\PROJECT TRAINING\\Selenium_Training\\upload\\image.png");
+		StringSelection select = new StringSelection("//Data_Test/36614783_962562140592023_7679533556837646336_n.jpg");
 
 		// Copy to clipboard
 		Toolkit.getDefaultToolkit().getSystemClipboard().setContents(select, null);
@@ -94,7 +94,7 @@ public class Topic09_UploadFile {
 	public void TC04_UploadFile() throws IOException {
 		driver.get("https://encodable.com/uploaddemo/");
 		WebElement fileInput = driver.findElement(By.xpath("//input[@id='uploadname1']"));
-		fileInput.sendKeys("/Users/meimei/Downloads/IMG_2023.JPGIMG_2023.JPG");
+		fileInput.sendKeys("//Data_Test/36614783_962562140592023_7679533556837646336_n.jpg");
 		
 		Select select = new Select(driver.findElement(By.xpath("//select[@class='upform_field picksubdir_field']")));
 		select.selectByVisibleText("/uploaddemo/files/");
@@ -108,37 +108,10 @@ public class Topic09_UploadFile {
 		
 		driver.findElement(By.xpath("//input[@id='uploadbutton']")).click();
 		
-		WebElement Email = driver.findElement(By.xpath("//dl[@id='fcuploadsummary']"));
-		List<WebElement> emailList = Email.findElements(By.xpath(".//*"));
+		WebElement name = driver.findElement(By.xpath("//dl[@id='fcuploadsummary']")); 
 		
-		WebElement name = driver.findElement(By.xpath("//dl[@id='fcuploadsummary']"));
-		List<WebElement> firstNameList = name.findElements(By.xpath(".//*"));
-		boolean isTrue = false;
-		boolean isNameTrue = false;
-		for (WebElement e : emailList) {
-			if (e.getText().equals(email))
-			{
-				isTrue = true;
-				Assert.assertTrue(isTrue);
-				break;
-			}
-		}
-		if (isTrue!=true)
-		{
-			Assert.assertTrue(isTrue);
-		}
-		for (WebElement e : firstNameList) {
-			if (e.getText().equals(email))
-			{
-				isNameTrue = true;
-				Assert.assertTrue(isNameTrue);
-				break;
-			}
-		}
-		if (isNameTrue!=true)
-		{
-			Assert.assertTrue(isNameTrue);
-		}
+		Assert.assertTrue(name.getText().contains(email));
+		Assert.assertTrue(name.getText().contains("36614783_962562140592023_7679533556837646336_n.jpg"));
 
 		driver.findElement(By.xpath("//a[text()='View Uploaded Files']")).click();
 		driver.findElement(By.xpath("//tbody/following-sibling::tr[@class='kutty']")).click();
@@ -147,6 +120,7 @@ public class Topic09_UploadFile {
 
 	@AfterClass
 	public void afterClass() {
+		driver.quit();
 	}
 
 }

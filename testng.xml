@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd">
+<suite name="Suite" parallel="none">
+	<test name="TestTestNG">
+	<parameter name="browser" value="firefox" /> 
+		<!-- <groups> -->
+		<!-- <run> -->
+		<!-- <include name="test01"></include> -->
+		<!-- </run> -->
+		<!-- </groups> -->
+		<classes>
+<!-- 			<class name="Practive_TestNG.TestAnnotation" /> -->
+<!-- 			<class name="Practive_TestNG.TestNG_Group" /> -->
+<!-- 			<class name="Practive_TestNG.TestNG_Priority" /> -->
+			<class name="Practive_TestNG.TestNG_MutilBrowser" />
+		</classes>
+		
+	</test> <!-- TestTestNG -->
+</suite> <!-- Suite -->
+
+

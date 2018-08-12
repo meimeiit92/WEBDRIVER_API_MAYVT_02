@@ -61,7 +61,7 @@ public class Topic08_Javascripts {
 		driver.findElement(By.xpath("//input[@name='lname']")).sendKeys(lastName);
 
 		driver.findElement(By.xpath("//input[@type='submit']")).click();
-		String stringAfter = driver.findElement(By.xpath("//div[@class='w3-container w3-large w3-border']")).getText();
+		String stringAfter = driver.findElement(By.xpath("//body[@class='w3-container']//div[1]")).getText();
 		Assert.assertTrue(stringAfter.contains(lastName));
 
 	}

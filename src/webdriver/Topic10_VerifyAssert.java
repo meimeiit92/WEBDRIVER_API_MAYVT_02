@@ -12,6 +12,7 @@ import org.openqa.selenium.WebElement;
 import org.openqa.selenium.firefox.FirefoxDriver;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.FluentWait;
+import org.openqa.selenium.support.ui.Wait;
 import org.openqa.selenium.support.ui.WebDriverWait;
 import org.testng.annotations.AfterClass;
 import org.testng.annotations.BeforeClass;
@@ -73,15 +74,14 @@ public class Topic10_VerifyAssert {
 		WebDriverWait wait = new WebDriverWait(driver, 10);
 		wait.until(ExpectedConditions
 				.visibilityOfElementLocated(By.xpath("//div[@id='javascript_countdown_time']")));
-		//Wait<WebDriver> wait1 = new FluentWait<WebDriver>(driver)
-		//	    .withTimeout(30, SECONDS)
-		//	    .pollingEvery(5, SECONDS)
-		//	    .ignoring(NoSuchElementException.class);
-		//	WebElement foo = wait1.until(new Function<WebDriver, WebElement>() 
-		//	{
-		//	  public WebElement apply(WebDriver driver) {
-		//	  return driver.findElement(By.xpath("//div[@id='javascript_countdown_time']"));
-		//	}
+	
+		//Wait<WebDriver> wait = new FluentWait<WebDriver>(driver).withTimeout(30, TimeUnit.SECONDS) // set the timeout
+		//	    .pollingEvery(5, TimeUnit.SECONDS) // set the interval between every 2 tries
+		//	    .ignoring(NoSuchElementException.class); // don't throw this exception
+		//	WebElement foo = wait.until(new Function<WebDriver, WebElement>() {
+		//	    public WebElement apply(WebDriver wd) {
+		//	        return wd.findElement(By.xpath("//div[@id='javascript_countdown_time']"));
+		//	    }
 		//	});
 	}
 
@@ -89,21 +89,19 @@ public class Topic10_VerifyAssert {
 	public void TC04_() {
 		driver.get("http://toolsqa.wpengine.com/automation-practice-switch-windows/");
 
-		//Wait<WebDriver> wait = new FluentWait<WebDriver>(driver)
-		//	    .withTimeout(30, SECONDS)
-		//	    .pollingEvery(5, SECONDS)
-		//	    .ignoring(NoSuchElementException.class);
-		//	WebElement foo = wait.until(new Function<WebDriver, WebElement>() 
-		//	{
-		//	  public WebElement apply(WebDriver driver) {
-		//	  return driver.findElement(By.xpath("//div[@id='javascript_countdown_time']"));
-		//	}
-
+		//Wait<WebDriver> wait = new FluentWait<WebDriver>(driver).withTimeout(30, TimeUnit.SECONDS) // set the timeout
+		//	    .pollingEvery(5, TimeUnit.SECONDS) // set the interval between every 2 tries
+		//	    .ignoring(NoSuchElementException.class); // don't throw this exception
+		//	WebElement foo = wait.until(new Function<WebDriver, WebElement>() {
+		//	    public WebElement apply(WebDriver wd) {
+		//	        return wd.findElement(By.xpath("//div[@id='javascript_countdown_time']"));
+		//	    }
+		//	});
 	}
 
 	@AfterClass
 	public void afterClass() {
-		// driver.quit();
+		driver.quit();
 	}
 
 }
