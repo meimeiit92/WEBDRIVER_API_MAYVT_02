@@ -1,2 +1,10 @@
 /bin/
 /test-output/
+
+# Python tool artifacts
+python_ai_test_tool/.venv/
+python_ai_test_tool/.env
+python_ai_test_tool/output/*.md
+python_ai_test_tool/output/*.ts
+__pycache__/
+*.pyc
